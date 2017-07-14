@@ -36,7 +36,6 @@ extension Reactive where Base:UIImagePickerController{
     public var didFinishPickingMediaWithInfo: Observable<[String : AnyObject]>{
         return delegate
             //methodInvoked ：Rx-回调无返回值的代理方法
-
             .methodInvoked(#selector(UIImagePickerControllerDelegate.imagePickerController(_:didFinishPickingMediaWithInfo:)))
             .map({ (a) in
                 return try castOrThrow(Dictionary<String,AnyObject>.self, a[1])
